@@ -1,14 +1,17 @@
 # load node version
-FROM node:16-alpine
+FROM ubuntu:18.04
+FROM node:16
 
 # create app dir
-WORKDIR /usr/src/app
+WORKDIR /home/app
+
+RUN mkdri -p /home/app
 
 # install dependencies
-COPY ./ /usr/src/app/
+COPY ./ /home/app
 
 RUN npm install
 
 EXPOSE 8888
 
-CMD ["npm", "start"]
+CMD ["node", "index.js"]
