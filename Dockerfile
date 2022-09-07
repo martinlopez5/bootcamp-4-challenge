@@ -2,14 +2,13 @@
 FROM node:16-alpine
 
 # create app dir
-WORKDIR /opt/hello-node
+WORKDIR /usr/src/app
 
 # install dependencies
-COPY package*.json ./
+COPY ./ /usr/src/app/
+
 RUN npm install
 
-#bundle everything
-COPY . .
-
 EXPOSE 8888
+
 CMD ["npm", "start"]
