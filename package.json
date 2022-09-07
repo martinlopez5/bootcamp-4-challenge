@@ -6,7 +6,7 @@
   "author": "Margus",
   "scripts": {
     "start": "node index.js",
-    "test": "mocha index.js"
+    "test": "mocha"
   },
   "dependencies": {
     "express": "*"
