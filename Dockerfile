@@ -5,7 +5,7 @@ FROM node:16
 # create app dir
 WORKDIR /home/app
 
-RUN mkdri -p /home/app
+RUN mkdir -p /home/app
 
 # install dependencies
 COPY ./ /home/app
