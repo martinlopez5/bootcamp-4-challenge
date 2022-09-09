@@ -43,7 +43,7 @@ trivy-security:
 
     - name: Run Trivy vulnerability scanner
       uses: aquasecurity/trivy-action@master
-        with:
+      with:
           image-ref: '${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest:${{ github.sha }}'
           format: 'sarif'
           output: 'trivy-results.sarif'
