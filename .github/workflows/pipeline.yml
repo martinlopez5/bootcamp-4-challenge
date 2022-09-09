@@ -30,7 +30,6 @@ jobs:
 
 
   trivy-security:
-    name: Build
     runs-on: ubuntu-latest
     needs: init
     steps:
