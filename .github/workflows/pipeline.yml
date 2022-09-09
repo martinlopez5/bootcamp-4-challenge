@@ -8,7 +8,7 @@ on:
 
 env:
     REGISTRY: margus23
-    IMAGE_NAME: bootcamp-backend-docker
+    IMAGE_NAME: challenge4-backend-docker
 
 
 jobs:
@@ -60,5 +60,6 @@ jobs:
     - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
       with:
         heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-        heroku_app_name: "bootcamp-backend-docker" #Must be unique in Heroku
+        heroku_app_name: "challenge4-backend-docker" #Must be unique in Heroku
         heroku_email: "martingustavolopez@gmail.com"
+        usedocker: true
