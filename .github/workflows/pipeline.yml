@@ -17,7 +17,6 @@ jobs:
     strategy:
       matrix:
         node-version: [16.x]
-
     steps:
     - uses: actions/checkout@v3
     - name: Use Node.js ${{ matrix.node-version }}
@@ -36,22 +35,18 @@ trivy-security:
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
-
     - name: Build an image from Dockerfile
-      run: |
-          docker build -t ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest .
-
+    - run: docker build -t ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest .
     - name: Run Trivy vulnerability scanner
       uses: aquasecurity/trivy-action@master
       with:
-          image-ref: '${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest:${{ github.sha }}'
-          format: 'sarif'
-          output: 'trivy-results.sarif'
-
-      - name: Upload Trivy scan results to GitHub Security tab
-        uses: github/codeql-action/upload-sarif@v2
-        with:
-          sarif_file: 'trivy-results.sarif'
+        image-ref: '${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest:${{ github.sha }}'
+        format: 'sarif'
+        output: 'trivy-results.sarif'
+    - name: Upload Trivy scan results to GitHub Security tab
+      uses: github/codeql-action/upload-sarif@v2
+      with:
+        sarif_file: 'trivy-results.sarif'
 
 
 
